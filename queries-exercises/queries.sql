@@ -14,7 +14,7 @@ SELECT
 FROM 
 	payment p
 WHERE
-	YEAR(p.date_created) > 2020
+	p.date_created >= '2021-01-01 00:00:00' AND p.status = 'RECEIVED'
 GROUP BY 
 	billing_type;
 
@@ -26,7 +26,7 @@ FROM
 INNER JOIN 
 	payment p ON ca.id = p.customer_account_id
 WHERE
-	p.value > 1000
+	p.value > 1000 AND p.status = 'RECEIVED'
 LIMIT 
 	20;
 
